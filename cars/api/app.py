@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 
+from cars.db.models import db
+
 from . import handlers
-from .models import db
 from .settings import DB_URL
 
 

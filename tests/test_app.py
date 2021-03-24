@@ -1,10 +1,10 @@
 import pytest
 from httpx import AsyncClient
 
-from cars.app import app
-from cars.models import db
-from cars.data_models import CreateCarRequest
-from cars.settings import DB_URL
+from cars.api.app import app
+from cars.db.models import db
+from cars.common.data_models import CreateCarRequest
+from cars.api.settings import DB_URL
 
 pytestmark = [pytest.mark.asyncio]
 

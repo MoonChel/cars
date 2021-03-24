@@ -1,6 +1,6 @@
 import enum
 from .base_client import BaseClient
-from cars.data_models import CreateCarRequest, CarModel
+from cars.common.data_models import CreateCarRequest, CarModel
 
 
 class CarsEndpoint(enum.Enum):

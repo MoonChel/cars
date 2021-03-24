@@ -1,6 +1,6 @@
 import pytest
 
-from cars.data_models import CarModel, CreateCarRequest
+from cars.common.data_models import CreateCarRequest
 from cars.client.cars_client import CarsClient
 from cars.client.base_client import ClientConfig
 
