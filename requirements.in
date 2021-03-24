@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+gino
+pytest
+pytest-asyncio
+pytest-vcr
+httpx
+
+black
