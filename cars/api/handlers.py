@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response
 
-from .models import Car
-from .data_models import CreateCarRequest, CarModel
+from cars.db.models import Car
+from cars.common.data_models import CreateCarRequest, CarModel
 
 router = APIRouter(prefix="/api")
 
