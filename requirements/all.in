@@ -1,9 +1,11 @@
+# base
 fastapi
 uvicorn[standard]
 gino
+httpx
+python-dotenv
+
+# test
 pytest
 pytest-asyncio
 pytest-vcr
-httpx
-
-black

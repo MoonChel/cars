@@ -1,0 +1,24 @@
+language: python
+python:
+  - "3.9"
+
+install:
+  pip install -r requirements/all.txt
+
+services:
+  - postgresql
+
+env:
+  global:
+  - DB_USER=postgres
+  - DB_NAME=guest
+
+before_script:
+  - psql --command="create database ${DB_NAME};" -U postgres
+  
+script:
+  pytest
+
+notifications:
+  # for some reason encrypted config by travis does not work
+  slack: moonchel:32qrmDkMvQcFTDn8LNc7Rrbi
