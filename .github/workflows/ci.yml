@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     branches:
-      - 'master'
+      - 'vlado/github-actions'
 
 jobs:
   build-and-deploy:
