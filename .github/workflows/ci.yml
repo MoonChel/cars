@@ -1,46 +1,23 @@
-name: Python app
+name: Build and deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
 
 jobs:
-  build-and-test:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
-    container: python:3.9-slim
-
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_DB: cars
-          POSTGRES_USER: guest
-          POSTGRES_PASSWORD: guest
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    env:
-      DB_HOST: postgres
-      DB_NAME: cars
-      DB_USER: guest
-      DB_PASSWORD: guest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       
-      - name: Install deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install black
-          pip install -r requirements/all.txt
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
       
-      - name: Lint with black
-        run: black --check cars
-      
-      - name: Test app
-        run: pytest
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1    
       
       - name: Login to DockerHub
         uses: docker/login-action@v1 
@@ -51,6 +28,4 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v2.5.0
         with:
-          tag: moonchel/cars:latest
-                    
-
+          tag: moonchel/cars:latest  
