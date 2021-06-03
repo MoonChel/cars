@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     branches:
-      - 'master'
+      - 'vlado/github-actions'
 
 jobs:
   build-and-deploy:
@@ -28,4 +28,5 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v2.5.0
         with:
-          tag: moonchel/cars:latest  
+          tags: moonchel/cars:latest  
+          push: true
